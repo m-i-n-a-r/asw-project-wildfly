@@ -6,9 +6,9 @@ Sperimentazione di [JBoss WildFly](http://wildfly.org/):
 - effettuare il porting delle applicazioni e degli script di esempio per EJB
 
 ## Partecipanti
-Matteo Aquilani
-Giacomo Bonanni
-Gianluca Conti
-Daniele Mainella
-Daria Marone
+- Matteo Aquilani
+- Giacomo Bonanni
+- Gianluca Conti
+- Daniele Mainella
+- Daria Marone
 
