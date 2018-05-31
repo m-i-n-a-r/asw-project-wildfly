@@ -1,5 +1,5 @@
 #generazione del war SpringBootBasic.war
-cd /home/asw/projects/spring-boot-basic
+cd /home/asw/projects/SpringBootBasic
 mvn clean package
 #Deploy di SpringBootBasic.war su wildfly
 sudo cp /home/asw/projects/spring-boot-basic/target/SpringBootBasic.war /usr/local/wildfly/standalone/deployments
