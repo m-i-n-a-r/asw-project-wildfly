@@ -35,5 +35,5 @@ cd /usr/local/wildfly/bin
 /usr/local/wildfly/standalone/log/server.log
 - Cambiare l'indirizzo ip delle rotte per la porta 8080
 sudo nano /usr/local/wildfly/standalone/configuration/standalone.xml
-Apre un editor, modificare la seguente porzione
-<socket-binding name="http" port="${jboss.http.port:8080}"/>
+Apre un editor, modificare la seguente porzione:
+socket-binding name="http" port="${jboss.http.port:8080}"
