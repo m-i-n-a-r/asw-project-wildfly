@@ -54,7 +54,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 		# installa docker e docker compose 
         node.vm.provision :shell, path: "../_shared/scripts/setup-docker.sh"
-        node.vm.provision :shell, path: "../_shared/scripts/setup-docker-compose.sh"
         
 		# si configura come client per il registry presso swarm.inf.uniroma3.it:5000 
         ## TODO node.vm.provision :shell, path: "../_shared/scripts/setup-swarm-client.sh"

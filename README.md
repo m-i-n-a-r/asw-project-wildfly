@@ -21,9 +21,9 @@ Sperimentazione di [JBoss WildFly](http://wildfly.org/):
 
 **3.** una volta aperta la sessione con la macchian docker, dentro la cartella /projects (dove è presente il DockerFile) bisogna eseguire i seguenti comandi:
 	
-	**a.** docker build --tag=wildfly-image . (questo comando ci permette di creare un immagine che contiene wildfly dove viene deployato il file .war situato nella cartella /projects/deployments)
+	a. docker build --tag=wildfly-image . (questo comando ci permette di creare un immagine che contiene wildfly dove viene deployato il file .war situato nella cartella /projects/deployments)
 
-	**b.** docker run -p 8080:8080 -it wildfly-image (in questo modo avvieremo il server WildFly e sarà in ascolto nella porta 8080)
+	b. docker run -p 8080:8080 -it wildfly-image (in questo modo avvieremo il server WildFly e sarà in ascolto nella porta 8080)
 
 Una volta che Wildfly è in esecuzione è possibile interrogare le seguente rotta:
 localhost:8080/hello-world/hello stampa un messaggio "Hello world!"
