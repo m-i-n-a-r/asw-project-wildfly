@@ -16,7 +16,7 @@ Sperimentazione di [JBoss WildFly](http://wildfly.org/):
     
    Verranno scaricati e installati:
 
-   - [Java SDK](http://www.oracle.com/technetwork/java/javase/overview/index.html/) 
+   - [Java SDK](http://www.oracle.com/technetwork/java/javase/overview/index.html) 
    - [Gradle](https://gradle.org/)
    - [Maven](https://maven.apache.org/) 
    - [Wildfly](http://wildfly.org/)
