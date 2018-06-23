@@ -1,6 +1,8 @@
 # 
-# Vagrantfile per un singolo nodo (docker), su cui è installato Docker e Docker Compose.   
-# (Ci si può installare anche Java, Gradle e Maven). 
+# Vagrantfile per un doppio nodo (docker):
+# sul primo è installato Docker e Docker Compose.   
+# (Ci si può installare anche Java, Gradle e Maven).
+# Sul secondo c'è esclusivamente Java, fungerà da client. 
 # Basata su Ubunty 16.04 LTS. 
 # 
 
@@ -54,7 +56,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 		# installa docker e docker compose 
         node.vm.provision :shell, path: "../_shared/scripts/setup-docker.sh"
-        node.vm.provision :shell, path: "../_shared/scripts/setup-docker-compose.sh"
         
 		# si configura come client per il registry presso swarm.inf.uniroma3.it:5000 
         ## TODO node.vm.provision :shell, path: "../_shared/scripts/setup-swarm-client.sh"
@@ -64,6 +65,39 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         node.vm.provision :shell, 
             inline: "echo  'configurazione nodo docker completa'"
+
+    end
+
+    #
+    # Configurazione del nodo "client", che prevede:  
+    # - Java
+    #
+    config.vm.define "client" do |node|
+        node.vm.hostname = "client"    
+        node.vm.network "private_network", ip: "10.11.1.201", virtualbox__intnet: true
+
+        node.vm.provider "virtualbox" do |v| 
+            v.memory = 1024 
+			v.cpus = 1
+        end 
+
+        node.vm.network "forwarded_port", guest: 22, host: 2221, id: 'ssh', auto_correct: true
+        node.ssh.forward_agent = true
+ 
+        # provisioning con bash 
+        node.vm.provision :shell, :inline => 'apt-get update'
+        node.vm.provision :shell, path: "../_shared/scripts/setup-java.sh"
+        node.vm.provision :shell, :inline => "echo '10.11.1.101 server' >> /etc/hosts"
+        node.vm.provision :shell, :inline => "echo '10.11.1.201 client' >> /etc/hosts"
+
+		# installa docker e docker compose 
+        node.vm.provision :shell, path: "../_shared/scripts/setup-docker.sh"
+
+		# crea un link simbolico alla cartella dei progetti asw nella cartella dell'utente di default 
+        node.vm.provision :shell, :inline => 'ln -s /home/asw/projects projects'
+
+        node.vm.provision :shell, 
+            inline: "echo  'configurazione nodo client completata'"
 
     end
 
