@@ -12,7 +12,7 @@ Sperimentazione di [JBoss WildFly](http://wildfly.org/):
 ## Esecuzione
 
 1. Per avviare o creare l'ambiente di esecuzione, posizionarsi nella cartella **environments/docker** e usare il comando 
-    - `vagrant up`   che crea e configura la macchina guest descritta nel Vagranfile.
+    - `vagrant up`   che crea e configura la macchina guest, descritta nel Vagrantfile.
     
    Verranno scaricati e installati:
 
@@ -28,7 +28,7 @@ Sperimentazione di [JBoss WildFly](http://wildfly.org/):
 
 3. Posizionarsi  nella cartella  **/projects** (dove è presente il DockerFile) e eseguire i seguenti comandi:
 
-   - `docker build --tag=wildfly-image .`  che crea un immagine che contiene Wildfly dove viene deployato il *file .war* situato nella cartella **/projects/deployments** ;
+   - `docker build --tag=wildfly-image .`  che crea un immagine che contiene Wildfly, dove viene deployato il *file .war* situato nella cartella **/projects/deployments** ;
 
    - `docker run -p 8080:8080 -it wildfly-image`  che avvia il server WildFly in ascolto sulla porta **8080** del guest e **8081** dell' host.		
 
@@ -37,7 +37,7 @@ Sperimentazione di [JBoss WildFly](http://wildfly.org/):
 
    - `localhost:8081/hello-world/hello`  che stampa un messaggio "Hello world!"
 
-E' possibile interrogare le rotte tramite curl 'nomerotta', o eseguendo lo script apposito, con il comando
+E' possibile interrogare la rotta tramite curl 'nomerotta', o eseguendo il comando
 
    - `./TestHello.sh`
 
