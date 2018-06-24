@@ -2,10 +2,12 @@
 #FROM busybox:latest
 
 FROM jboss/wildfly
+# Deploy di un semplice Hello World
 ADD /deployments/hello-world.war /opt/jboss/wildfly/standalone/deployments/
 # Deploy dell'enterprise java bean session counter stateful
-FROM jboss/wildfly
 ADD /deployments/CounterEJB.jar /opt/jboss/wildfly/standalone/deployments/
+
+
 
 #EXPOSE 8080
 
