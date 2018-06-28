@@ -4,8 +4,10 @@
 FROM jboss/wildfly
 # Deploy di un semplice Hello World
 ADD /deployments/hello-world.war /opt/jboss/wildfly/standalone/deployments/
-# Deploy dell'enterprise java bean session counter stateful
-ADD /deployments/CounterEJB.jar /opt/jboss/wildfly/standalone/deployments/
+
+# Prova
+ADD /deployments/session-counter-ejb-client.jar /opt/jboss/wildfly/standalone/deployments/
+ADD /deployments/session-counter-ejb-interface.jar /opt/jboss/wildfly/standalone/deployments/
 
 
 
