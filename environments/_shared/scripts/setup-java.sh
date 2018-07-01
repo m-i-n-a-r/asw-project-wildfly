@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "/home/asw/_shared/scripts/common.sh"
+source "/home/asw/environments/_shared/scripts/common.sh"
 
 # set up Java constants 
 JAVA_VERSION=8

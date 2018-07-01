@@ -37,7 +37,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         node.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
         node.ssh.forward_agent = true
-        # node.ssh.forward_x11 = true
  
 		# 8080 -> 8081 per evitare conflitti sulla porta 8080 con altre vm  
         node.vm.network "forwarded_port", guest: 8080, host: 8081, id: 'http', auto_correct: true
