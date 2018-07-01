@@ -1,7 +1,6 @@
 # 
 # Vagrantfile per un doppio nodo (docker):
 # sul primo è installato Docker e Docker Compose.   
-# (Ci si può installare anche Java, Gradle e Maven).
 # Sul secondo c'è esclusivamente Java, fungerà da client. 
 # Basata su Ubunty 16.04 LTS. 
 # 
@@ -25,18 +24,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Configurazione del nodo "docker", che prevede: 
     # - Docker 
 	# - Docker Compose 
-    # - Java, Gradle, Maven (no)
     #
+
     config.vm.define "docker" do |node|
         node.vm.hostname = "docker"    
         node.vm.network "private_network", ip: "10.11.1.121", virtualbox__intnet: true
 
         node.vm.provider "virtualbox" do |v| 
 			v.cpus = 2
-#			v.cpus = 4
-            v.memory = 2048 
-#            v.memory = 4096 
-#            v.memory = 8192 
+            v.memory = 2048  
         end 
 
         node.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
@@ -46,25 +42,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		# 8080 -> 8081 per evitare conflitti sulla porta 8080 con altre vm  
         node.vm.network "forwarded_port", guest: 8080, host: 8081, id: 'http', auto_correct: true
 
-        # provisioning con bash 
-        # node.vm.provision :shell, :inline => 'apt-get update'
-        # node.vm.provision :shell, :inline => 'apt-get install unzip'
-
-        # node.vm.provision :shell, path: "../_shared/scripts/setup-java.sh"
-        # node.vm.provision :shell, path: "../_shared/scripts/setup-gradle.sh"
-        # node.vm.provision :shell, path: "../_shared/scripts/setup-maven.sh"
-
 		# installa docker e docker compose 
         node.vm.provision :shell, path: "../_shared/scripts/setup-docker.sh"
-        
-		# si configura come client per il registry presso swarm.inf.uniroma3.it:5000 
-        ## TODO node.vm.provision :shell, path: "../_shared/scripts/setup-swarm-client.sh"
 
 		# crea un link simbolico alla cartella dei progetti asw nella cartella dell'utente di default 
         node.vm.provision :shell, :inline => 'ln -s /home/asw/projects projects'
 
         node.vm.provision :shell, 
-            inline: "echo  'configurazione nodo docker completa'"
+            inline: "echo  'configurazione nodo docker del progetto asw Wildfly completata'"
 
     end
 
@@ -72,6 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Configurazione del nodo "client", che prevede:  
     # - Java
     #
+
     config.vm.define "client" do |node|
         node.vm.hostname = "client"    
         node.vm.network "private_network", ip: "10.11.1.201", virtualbox__intnet: true
@@ -97,7 +83,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         node.vm.provision :shell, :inline => 'ln -s /home/asw/projects projects'
 
         node.vm.provision :shell, 
-            inline: "echo  'configurazione nodo client completata'"
+            inline: "echo  'configurazione nodo client del progetto asw Wildfly completata'"
 
     end
 

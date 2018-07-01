@@ -9,8 +9,8 @@ Sperimentazione di [JBoss WildFly](http://wildfly.org/):
 * [projects](projects/) contiene il codice dell' *applicazione distribuita*, formata da componenti Enterprise Bean (EJB);
 * [environments](environments/) contiene il codice per la gestione dell' *ambiente distribuito*  di esecuzione su cui eseguire l'applicazione sviluppata.
 
-### Per l'esecuzione dell'ambiente basato su virtual machine, consultare [questa pagina](environments/docker)
-### Per l'esecuzione dell'ambiente basato su Docker, consultare [questa pagina](environments/virtualbox)
+### Per l'esecuzione dell'ambiente basato su virtual machine, consultare [questa pagina](environments/virtualbox)
+### Per l'esecuzione dell'ambiente basato su Docker, consultare [questa pagina](environments/docker)
 
 ## Obiettivi raggiunti
 - E' possibile costruire una macchina virtuale con un'installazione funzionante dell'application server Wildfly
