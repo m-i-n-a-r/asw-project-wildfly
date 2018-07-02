@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: session-counter-ejb-interface.jar
+Main-Class: asw.ejb.counter.client.Main
+
